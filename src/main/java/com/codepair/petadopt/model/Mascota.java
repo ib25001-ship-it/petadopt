@@ -1,13 +1,11 @@
 package com.codepair.petadopt.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "mascotas")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Mascota {
 
     @Id
@@ -17,7 +15,11 @@ public class Mascota {
     private String nombre;
     private String especie;
     private String raza;
-    private String edad;
+    private Integer edad;
+    private String descripcion;
     private String estado;
-    private String informacionClinica;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 }

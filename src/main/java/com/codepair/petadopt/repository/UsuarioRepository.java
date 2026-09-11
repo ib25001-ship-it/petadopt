@@ -1,9 +1,10 @@
+// UsuarioRepository.java
 package com.codepair.petadopt.repository;
 
-import com.codepair.petadopt.model.Solicitud;
+import com.codepair.petadopt.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SolicitudRepository extends JpaRepository<Solicitud, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 }
