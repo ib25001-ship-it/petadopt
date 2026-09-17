@@ -4,27 +4,29 @@ import com.codepair.petadopt.model.SolicitudAdopcion;
 import com.codepair.petadopt.repository.SolicitudAdopcionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SolicitudAdopcionService {
 
     @Autowired
-    private SolicitudAdopcionRepository solicitudRepository;
+    private SolicitudAdopcionRepository solicitudAdopcionRepository;
 
-    public List<SolicitudAdopcion> obtenerTodas() {
-        return solicitudRepository.findAll();
+    public List<SolicitudAdopcion> listarTodos() {
+        return solicitudAdopcionRepository.findAll();
+    }
+
+    public Optional<SolicitudAdopcion> buscarPorId(Long id) {
+        return solicitudAdopcionRepository.findById(id);
     }
 
     public SolicitudAdopcion guardar(SolicitudAdopcion solicitud) {
-        return solicitudRepository.save(solicitud);
+        return solicitudAdopcionRepository.save(solicitud);
     }
 
-    public SolicitudAdopcion obtenerPorId(Integer id) {
-        return solicitudRepository.findById(id).orElse(null);
-    }
-
-    public void eliminar(Integer id) {
-        solicitudRepository.deleteById(id);
+    public void eliminar(Long id) {
+        solicitudAdopcionRepository.deleteById(id);
     }
 }

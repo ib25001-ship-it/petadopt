@@ -5,16 +5,15 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "seguimientos")
+@Table(name = "seguimiento")
 @Data
 public class Seguimiento {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private LocalDate fecha;
-    private String observaciones;
+    private LocalDate fechaSeguimiento;
+    private String comentarios;
+    private String estadoMascota;
 
     @ManyToOne
     @JoinColumn(name = "solicitud_id")

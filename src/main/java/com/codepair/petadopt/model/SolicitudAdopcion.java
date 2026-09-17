@@ -5,14 +5,12 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "solicitudes_adopcion")
+@Table(name = "solicitud_adopcion")
 @Data
 public class SolicitudAdopcion {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private LocalDate fechaSolicitud;
     private String estado;
 

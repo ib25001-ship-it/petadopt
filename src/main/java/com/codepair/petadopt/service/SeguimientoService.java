@@ -4,7 +4,9 @@ import com.codepair.petadopt.model.Seguimiento;
 import com.codepair.petadopt.repository.SeguimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SeguimientoService {
@@ -12,19 +14,19 @@ public class SeguimientoService {
     @Autowired
     private SeguimientoRepository seguimientoRepository;
 
-    public List<Seguimiento> obtenerTodos() {
+    public List<Seguimiento> listarTodos() {
         return seguimientoRepository.findAll();
+    }
+
+    public Optional<Seguimiento> buscarPorId(Long id) {
+        return seguimientoRepository.findById(id);
     }
 
     public Seguimiento guardar(Seguimiento seguimiento) {
         return seguimientoRepository.save(seguimiento);
     }
 
-    public Seguimiento obtenerPorId(Integer id) {
-        return seguimientoRepository.findById(id).orElse(null);
-    }
-
-    public void eliminar(Integer id) {
+    public void eliminar(Long id) {
         seguimientoRepository.deleteById(id);
     }
 }
